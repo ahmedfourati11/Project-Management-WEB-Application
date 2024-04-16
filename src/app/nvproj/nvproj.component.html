@@ -1,0 +1,98 @@
+<br>
+<a routerLink=""><button type="submit" class="btn btn-primary">Retourne à la page précédente</button></a>
+<br>
+
+<h2 style="display: flex; justify-content: center;">Ajouter Un Nouveau Projet !</h2> 
+<br>
+
+<div class="form-container">
+  <form (submit)="ajouterProjet()" name="nomDuFormulaire">
+
+    <div class="mb-3">
+      <label class="form-label">Nom Du Projet</label>
+      <input type="text" class="form-control" [(ngModel)]="projet.nom" placeholder="Nom du projet" name="nomProjet" [ngModelOptions]="{standalone: true}" required>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Période Du:</label>
+          <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" name="periodedu" [(ngModel)]="projet.dateDebut" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Au:</label>
+          <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" name="periodeau" [(ngModel)]="projet.dateFin" required>
+        </div>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Budget Global Du Projet (en Dinar Tunisien)</label>
+      <input type="number" class="form-control" [ngModelOptions]="{standalone: true}" name="budget" [(ngModel)]="projet.budget" placeholder="Budget Global Du Projet" required>
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label">Nombre d'activités de ce Projet</label>
+      <input type="number" class="form-control" [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }" placeholder="Nombre d'activités" (ngModelChange)="updateListe()"  name="nombre" required>
+    </div>
+    
+    <ng-container *ngFor="let i of liste;">
+      <div class="mb-3">
+        <hr>
+        <b><label class="form-label" style="color: rgb(9, 162, 83);">Activité N°: {{i}}</label></b>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">Nom De l'activité : {{i}} :</label>
+            <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" name="nomact" [(ngModel)]="projet.activites[i].nom" placeholder="Nom de l'activité" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Budget De l'activité : {{i}} :</label>
+            <input type="number" class="form-control" [ngModelOptions]="{standalone: true}" name="budget{{i}}" [(ngModel)]="projet.activites[i].budget" placeholder="Budget de l'activité" required>
+        </div>                         
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">Période Du:</label>
+            <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" name="dateDebut" [(ngModel)]="projet.activites[i].dateDebut" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Au:</label>
+            <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" name="dateFin" [(ngModel)]="projet.activites[i].dateFin" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Lieu De l'activité : {{i}} :</label>
+          <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" name="lieu_Act{{i}}" [(ngModel)]="projet.activites[i].lieu" placeholder="Lieu de l'activité" required>
+      </div>      
+      
+      </div>
+
+      <div *ngIf="i === liste.length" style="display: flex; justify-content: center;">
+        <p style="color: lightseagreen;">---- FIN Des Activités ----</p>
+      </div>
+
+    </ng-container>
+  
+    <div class="mb-3">
+      <label class="form-label">Coordinateur Du Projet</label>
+      <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" name="coordinateur" [(ngModel)]="projet.coordinateur" placeholder="Coordinateur Du Projet" required>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Rapport Du Projet</label>
+      <input type="file" class="form-control" [ngModelOptions]="{standalone: true}" name="rapport" [(ngModel)]="projet.rapport" placeholder="Rapport Du Projet">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Ajouter le projet</button>
+  </form>
+  
+</div>
+
+
+
+
+
+
