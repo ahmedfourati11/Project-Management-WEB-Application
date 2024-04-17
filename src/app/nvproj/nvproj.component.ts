@@ -25,6 +25,13 @@ export class NvprojComponent implements OnInit {
     activites: []
   };
 
+  liii =[{id_proj:1,nom_proj:"rifagereb"}];
+
+  updateliii(){
+    this.liii.push({id_proj:2,nom_proj:"teeest"});  
+    console.log(this.liii);
+    
+  }
   nombre: number = 0;
   liste: number[] = [];
 
@@ -55,7 +62,6 @@ export class NvprojComponent implements OnInit {
       rapport: '',
       activites: []
     };
-    
   }
 
   ajouterActivite(): void {
