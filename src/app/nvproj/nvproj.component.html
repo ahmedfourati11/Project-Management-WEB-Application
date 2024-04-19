@@ -6,93 +6,138 @@
 <br>
 
 <div class="form-container">
-  <form (submit)="ajouterProjet()" name="nomDuFormulaire">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
     <div class="mb-3">
       <label class="form-label">Nom Du Projet</label>
-      <input type="text" class="form-control" [(ngModel)]="projet.nom" placeholder="Nom du projet" name="nomProjet" [ngModelOptions]="{standalone: true}" required>
+      <input type="text" class="form-control" name="nom_du_Projet" ngModel placeholder="Nom du projet" required>
     </div>
     
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
           <label class="form-label">Période Du:</label>
-          <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" name="periodedu" [(ngModel)]="projet.dateDebut" required>
+          <input type="date" class="form-control" name="date_depart_projet" ngModel required>
         </div>
       </div>
       <div class="col-md-6">
         <div class="mb-3">
           <label class="form-label">Au:</label>
-          <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" name="periodeau" [(ngModel)]="projet.dateFin" required>
+          <input type="date" class="form-control" name="date_fin_projet" ngModel required>
         </div>
       </div>
     </div>
   
     <div class="mb-3">
       <label class="form-label">Budget Global Du Projet (en Dinar Tunisien)</label>
-      <input type="number" class="form-control" [ngModelOptions]="{standalone: true}" name="budget" [(ngModel)]="projet.budget" placeholder="Budget Global Du Projet" required>
+      <input type="number" class="form-control" name="budget_projet" ngModel placeholder="Budget Global Du Projet" required>
     </div>
     
     <div class="mb-3">
       <label class="form-label">Nombre d'activités de ce Projet</label>
-      <input type="number" class="form-control" [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }" placeholder="Nombre d'activités" (ngModelChange)="updateListe()"  name="nombre" required>
+      <input type="number" class="form-control" [(ngModel)]="nombre" placeholder="Nombre d'activités" (ngModelChange)="updateListe()"  name="nombre" required>
     </div>
     
     <ng-container *ngFor="let i of liste;">
-      <div class="mb-3">
+      
         <hr>
         <b><label class="form-label" style="color: rgb(9, 162, 83);">Activité N°: {{i}}</label></b>
+
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Nom De l'activité : {{i}} :</label>
-            <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" name="nomact" [(ngModel)]="projet.activites[i].nom" placeholder="Nom de l'activité" required>
+            <input type="text" class="form-control"  name="nom_act_{{i}}" ngModel placeholder="Nom de l'activité" required>
           </div>
+
           <div class="col-md-6">
             <label class="form-label">Budget De l'activité : {{i}} :</label>
-            <input type="number" class="form-control" [ngModelOptions]="{standalone: true}" name="budget{{i}}" [(ngModel)]="projet.activites[i].budget" placeholder="Budget de l'activité" required>
-        </div>                         
+            <input type="number" class="form-control" name="budget_act_{{i}}" placeholder="Budget de l'activité" required>
+          </div>                         
         </div>
+
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Période Du:</label>
-            <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" name="dateDebut" [(ngModel)]="projet.activites[i].dateDebut" required>
+            <input type="date" class="form-control" name="date_Debut_act_{{i}}" required>
           </div>
+
           <div class="col-md-6">
             <label class="form-label">Au:</label>
-            <input type="date" class="form-control" [ngModelOptions]="{standalone: true}" name="dateFin" [(ngModel)]="projet.activites[i].dateFin" required>
+            <input type="date" class="form-control" name="date_Fin_act_{{i}}" ngModel required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">Frais d'Hébergement :</label>
+            <input type="number" class="form-control"  name="hebergement_act_{{i}}" ngModel required>
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label">Frais De Transport :</label>
+            <input type="number" class="form-control" name="transport_act_{{i}}" ngModel required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">Frais D'alimentation :</label>
+            <input type="number" class="form-control" name="alimentation_act_{{i}}" ngModel required>
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label">Frais D'Achat & Location :</label>
+            <input type="number" class="form-control" name="achatLocation_act_{{i}}" ngModel required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">Frais D'indemnité :</label>
+            <input type="number" class="form-control"  name="indemnite_act_{{i}}" ngModel required>
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label">Autre Dépense :</label>
+            <input type="number" class="form-control" name="autreDepense_act_{{i}}" ngModel required>
           </div>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Lieu De l'activité : {{i}} :</label>
-          <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" name="lieu_Act{{i}}" [(ngModel)]="projet.activites[i].lieu" placeholder="Lieu de l'activité" required>
-      </div>      
+          <input type="text" class="form-control"  name="lieu_act_{{i}}" ngModel placeholder="Lieu de l'activité" required>
+        </div> 
+        
+        
+        <div class="mb-3">
+          <label class="form-label">Rapport De l'activité : {{i}} : (Taper "y" s'il est prêt, sinon taper "n")</label>
+          <input type="text" class="form-control" name="rapport_act_{{i}}" ngModel placeholder="Taper - y - s'il est prêt, sinon taper - n -" required>
+        </div> 
       
-      </div>
+      
 
       <div *ngIf="i === liste.length" style="display: flex; justify-content: center;">
         <p style="color: lightseagreen;">---- FIN Des Activités ----</p>
       </div>
-
+    
     </ng-container>
   
     <div class="mb-3">
       <label class="form-label">Coordinateur Du Projet</label>
-      <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" name="coordinateur" [(ngModel)]="projet.coordinateur" placeholder="Coordinateur Du Projet" required>
+      <input type="text" class="form-control" name="coordinateur_projet" ngModel placeholder="Coordinateur Du Projet" required>
     </div>
   
     <div class="mb-3">
-      <label class="form-label">Rapport Du Projet</label>
-      <input type="file" class="form-control" [ngModelOptions]="{standalone: true}" name="rapport" [(ngModel)]="projet.rapport" placeholder="Rapport Du Projet">
+      <label class="form-label">Rapport Du Projet : (Taper "y" s'il est prêt, sinon taper "n")</label>
+      <input type="text" class="form-control" name="rapport_projet" placeholder="Rapport Du Projet Taper -y- s'il est prêt, sinon taper - n ">
     </div>
-  
-    <button type="submit" class="btn btn-primary">Ajouter le projet</button>
+
+    <br>
+
+    <div style="display: flex;justify-content: center;">
+      <button style="width: 80%;z-index: 1;" type="submit" class="btn btn-primary">Ajouter le projet</button>
+    </div>
+
   </form>
   
 </div>
-
-
-
-
-
-

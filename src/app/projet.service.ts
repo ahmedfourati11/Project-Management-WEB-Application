@@ -17,5 +17,4 @@ export class ProjetService {
     return this.projets;
   }
 
-  // Vous pouvez implémenter d'autres méthodes pour mettre à jour et supprimer des projets au besoin
 }
