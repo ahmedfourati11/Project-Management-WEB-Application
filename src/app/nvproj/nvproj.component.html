@@ -35,7 +35,7 @@
     
     <div class="mb-3">
       <label class="form-label">Nombre d'activités de ce Projet</label>
-      <input type="number" class="form-control" [(ngModel)]="nombre" placeholder="Nombre d'activités" (ngModelChange)="updateListe()"  name="nombre" required>
+      <input type="number" class="form-control" [(ngModel)]="nombre" placeholder="Nombre d'activités" (ngModelChange)="updateListe()"  name="nombre_dactivite" required>
     </div>
     
     <ng-container *ngFor="let i of liste;">
@@ -51,14 +51,14 @@
 
           <div class="col-md-6">
             <label class="form-label">Budget De l'activité : {{i}} :</label>
-            <input type="number" class="form-control" name="budget_act_{{i}}" placeholder="Budget de l'activité" required>
+            <input type="number" class="form-control" name="budget_act_{{i}}" ngModel placeholder="Budget de l'activité" required>
           </div>                         
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Période Du:</label>
-            <input type="date" class="form-control" name="date_Debut_act_{{i}}" required>
+            <input type="date" class="form-control" name="date_Debut_act_{{i}}" ngModel required>
           </div>
 
           <div class="col-md-6">
@@ -70,36 +70,36 @@
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Frais d'Hébergement :</label>
-            <input type="number" class="form-control"  name="hebergement_act_{{i}}" ngModel required>
+            <input type="number" class="form-control"  name="hebergement_act_{{i}}" placeholder="Entrer Le Montant Total" ngModel>
           </div>
           
           <div class="col-md-6">
             <label class="form-label">Frais De Transport :</label>
-            <input type="number" class="form-control" name="transport_act_{{i}}" ngModel required>
+            <input type="number" class="form-control" name="transport_act_{{i}}" placeholder="Entrer Le Montant Total" ngModel>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Frais D'alimentation :</label>
-            <input type="number" class="form-control" name="alimentation_act_{{i}}" ngModel required>
+            <input type="number" class="form-control" name="alimentation_act_{{i}}" placeholder="Entrer Le Montant Total" ngModel>
           </div>
           
           <div class="col-md-6">
             <label class="form-label">Frais D'Achat & Location :</label>
-            <input type="number" class="form-control" name="achatLocation_act_{{i}}" ngModel required>
+            <input type="number" class="form-control" name="achatLocation_act_{{i}}" placeholder="Entrer Le Montant Total" ngModel>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Frais D'indemnité :</label>
-            <input type="number" class="form-control"  name="indemnite_act_{{i}}" ngModel required>
+            <input type="number" class="form-control"  name="indemnite_act_{{i}}" placeholder="Entrer Le Montant Total" ngModel>
           </div>
           
           <div class="col-md-6">
             <label class="form-label">Autre Dépense :</label>
-            <input type="number" class="form-control" name="autreDepense_act_{{i}}" ngModel required>
+            <input type="number" class="form-control" name="autreDepense_act_{{i}}" placeholder="Entrer Le Montant Total" ngModel>
           </div>
         </div>
 
@@ -114,8 +114,6 @@
           <input type="text" class="form-control" name="rapport_act_{{i}}" ngModel placeholder="Taper - y - s'il est prêt, sinon taper - n -" required>
         </div> 
       
-      
-
       <div *ngIf="i === liste.length" style="display: flex; justify-content: center;">
         <p style="color: lightseagreen;">---- FIN Des Activités ----</p>
       </div>
@@ -128,9 +126,9 @@
     </div>
   
     <div class="mb-3">
-      <label class="form-label">Rapport Du Projet : (Taper "y" s'il est prêt, sinon taper "n")</label>
-      <input type="text" class="form-control" name="rapport_projet" placeholder="Rapport Du Projet Taper -y- s'il est prêt, sinon taper - n ">
-    </div>
+      <label class="form-label">Rapport Du Projet : (Taper "y" s'il est prêt, sinon taper "n") :</label>
+      <input type="text" class="form-control" name="rapport_projet" ngModel placeholder="Rapport Du Projet Taper -y- s'il est prêt, sinon taper - n ">
+    </div>    
 
     <br>
 
