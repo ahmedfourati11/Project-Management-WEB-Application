@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { Projet, Activite } from '../model';
-// import { ProjetService } from '../projet.service';
+import { ProjetsService } from '../projets.service';
 import { FormControl, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -20,6 +20,8 @@ export class NvprojComponent implements OnInit {
   projects: any = {};
   activities: any[] = [];
 
+  constructor(private projetsService: ProjetsService) { }
+
   ngOnInit(): void {
     this.updateListe();
   }
@@ -32,14 +34,14 @@ export class NvprojComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    const formData = form.value;
+
     // Réinitialiser les objets
     this.projects = {};
     this.activities = [];
 
-    // Récupérer les valeurs des champs du formulaire
-    const formData = form.value;
-
     // Extraire les champs du projet
+    this.projects.numero_du_projet=formData.numero_du_projet;
     this.projects.nom_du_Projet = formData.nom_du_Projet;
     this.projects.date_depart_projet = formData.date_depart_projet;
     this.projects.date_fin_projet = formData.date_fin_projet;
@@ -63,8 +65,15 @@ export class NvprojComponent implements OnInit {
       this.activities.push(activity);
     }
 
+    // Stocker les données dans le service ProjetsService
+    this.projetsService.addProjet(this.projects);
+
     // Afficher les objets dans la console ou faire autre chose avec eux
     console.log('Projet:', this.projects);
     console.log('Activités:', this.activities);
-  }
+
+    // Réinitialiser le formulaire
+    form.resetForm();
+}
+
 }

@@ -8,9 +8,19 @@
 <div class="form-container">
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
-    <div class="mb-3">
-      <label class="form-label">Nom Du Projet</label>
-      <input type="text" class="form-control" name="nom_du_Projet" ngModel placeholder="Nom du projet" required>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Nom Du Projet</label>
+          <input type="text" class="form-control" name="nom_du_Projet" ngModel placeholder="Nom Du Projet" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">N° Du Projet</label>
+          <input type="number" class="form-control" name="numero_du_projet" ngModel placeholder="Numéro Du Projet" required>
+        </div>
+      </div>
     </div>
     
     <div class="row">
