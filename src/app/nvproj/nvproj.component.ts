@@ -53,7 +53,7 @@ export class NvprojComponent implements OnInit {
     // Extraire les champs des activités
     for (let i = 1; i <= this.nombre; i++) {
       const activity = {
-        numero_actvite:i,
+        numero_activite:i,
         nom_activite: formData['nom_act_' + i],
         budget_activite: formData['budget_act_' + i],
         date_Debut_activite: formData['date_Debut_act_' + i],

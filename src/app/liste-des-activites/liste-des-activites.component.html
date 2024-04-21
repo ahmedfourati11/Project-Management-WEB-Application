@@ -8,17 +8,17 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">N° Activité</th>
             <th scope="col">Nom de l'activité</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-        <ng-container *ngFor="let compt of item.activites; let i = index">
+        <ng-container *ngFor="let activite of item.activites; let i = index">
           <tr>
             <th scope="row">{{ i+1 }}</th>
-            <td>{{ compt.nom_activite }}</td>
-            <td><button type="button" class="btn btn-primary">Détails de l'activités {{ i+1 }}</button></td>
+            <td>{{ activite.nom_activite }}</td>
+            <td><button type="button" class="btn btn-primary" (click)="navigateToactiviteDetails(item.numero_du_projet,i+1)">Détails de l'activités {{ i + 1 }}</button></td>
           </tr>
         </ng-container>
         </tbody>

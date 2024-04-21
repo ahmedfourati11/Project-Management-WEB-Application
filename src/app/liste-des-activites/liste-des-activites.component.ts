@@ -32,7 +32,8 @@ export class ListeDesActivitesComponent {
     });
     this.nbAct=this.item.activites.length;
     console.log(this.nbAct);
-    
   }
-
+  navigateToactiviteDetails(id1: number, id2: number) {
+    this.router.navigate(['details_de_lactivite', id1, id2]);
+  }
 }

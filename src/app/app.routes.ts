@@ -12,7 +12,7 @@ export const routes: Routes = [
     {path:"new_project", component:NvprojComponent},
     {path:"all_projects", component:AllprojComponent},
     {path:"liste_des_activite/:id", component:ListeDesActivitesComponent},
-    {path:"details_de_lactivite/:id", component:DetailsDeLactiviteComponent},
+    {path:"details_de_lactivite/:id1/:id2", component:DetailsDeLactiviteComponent},
     {path:"details_du_projet/:id", component:DetailsDuProjetComponent},
     {path:"confirmer_la_suppression_du_projet", component:ConfirmerLaSuppressionComponent}
 ];
