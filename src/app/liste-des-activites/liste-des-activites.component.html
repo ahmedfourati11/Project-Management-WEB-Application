@@ -1,22 +1,28 @@
-<table class="table" style="margin:5%; margin-left: 5%;">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nom de l'activité</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>act1</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>act2</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>act3</td>
-      </tr>
-    </tbody>
-</table>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8"><br>
+      <div style="display: flex;justify-content: center;">
+      <h1>Liste Des Activités Du projet N°: {{item.numero_du_projet}}</h1> 
+    </div>
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom de l'activité</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let compt of item.activites; let i = index">
+          <tr>
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ compt.nom_activite }}</td>
+            <td><button type="button" class="btn btn-primary">Détails de l'activités {{ i+1 }}</button></td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

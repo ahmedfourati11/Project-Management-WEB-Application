@@ -2,12 +2,11 @@
 <a routerLink=""><button type="submit" class="btn btn-primary">Retourne à la page précédente</button></a>
 <br>
 
-<h2 style="display: flex; justify-content: center;">Détails Du Projet {{item.numero_du_projet}}</h2> 
+<h2 style="display: flex; justify-content: center;">Détails Du Projet N° : {{item.numero_du_projet}}</h2> 
 <br>
 
 <div class="form-container">
-  <form>
-    (ngSubmit)="onSubmit(f)" #f="ngForm"
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
@@ -18,7 +17,7 @@
       <div class="col-md-6">
         <div class="mb-3">
           <label class="form-label">N° Du Projet</label>
-          <input type="number" class="form-control" name="numero_du_projet"  [(ngModel)]="item.numero_du_projet" placeholder="Numéro Du Projet" required>
+          <input type="number" class="form-control" name="numero_du_projet"  [(ngModel)]="item.numero_du_projet" placeholder="Numéro Du Projet" required readonly>
         </div>
       </div>
     </div>
@@ -45,7 +44,7 @@
     
     <div class="mb-3">
       <label class="form-label">Nombre d'activités de ce Projet</label>
-      <input type="number" class="form-control" placeholder="Nombre d'activités"  name="nombre_dactivite"  [(ngModel)]="item.nombre_dactivite" required>
+      <input type="number" class="form-control" placeholder="Nombre d'activités"  name="nombre_dactivite"  [(ngModel)]="item.nombre_dactivite" required readonly>
     </div>
   
     <div class="mb-3">
@@ -55,15 +54,16 @@
   
     <div class="mb-3">
       <label class="form-label">Rapport Du Projet : (Taper "y" s'il est prêt, sinon taper "n") :</label>
-      <input type="text" class="form-control" name="rapport_projet"  [(ngModel)]="item.rapport_projet" placeholder="Rapport Du Projet Taper -y- s'il est prêt, sinon taper - n ">
+      <input type="text" class="form-control" name="rapport_projet"  [(ngModel)]="item.rapport_projet" placeholder="Rapport Du Projet ( Taper - y - s'il est prêt, sinon taper - n )">
     </div>    
 
     <br>
 
     <div style="display: flex;justify-content: center;">
-      <button style="width: 80%;z-index: 1;" type="submit" class="btn btn-primary">Ajouter le projet</button>
+      <button style="width: 80%;z-index: 1;" type="submit" class="btn btn-primary">Modifier Les Détails Du Projet {{item.numero_du_projet}}</button>
     </div>
 
   </form>
   
 </div>
+<br>

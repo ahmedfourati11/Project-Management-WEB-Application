@@ -25,4 +25,15 @@ export class ProjetsService {
     console.log(projets);
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(projets));
   }
+
+  updateProjet(updatedProjet: any): void {
+    let projets = this.getProjets();
+    const index = projets.findIndex(projet => projet.numero_du_projet === updatedProjet.numero_du_projet);
+    if (index !== -1) {
+      projets[index] = updatedProjet;
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(projets));
+    } else {
+      console.error('Le projet à mettre à jour n\'a pas été trouvé.');
+    }
+  }
 }
