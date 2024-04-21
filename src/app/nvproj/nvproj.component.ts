@@ -38,7 +38,6 @@ export class NvprojComponent implements OnInit {
 
     // Réinitialiser les objets
     this.projects = {};
-    this.activities = [];
 
     // Extraire les champs du projet
     this.projects.numero_du_projet=formData.numero_du_projet;
@@ -49,6 +48,7 @@ export class NvprojComponent implements OnInit {
     this.projects.coordinateur_projet = formData.coordinateur_projet;
     this.projects.rapport_projet = formData.rapport_projet;
     this.projects.nombre_dactivite = formData.nombre_dactivite;
+    this.projects.activites = [];
 
     // Extraire les champs des activités
     for (let i = 1; i <= this.nombre; i++) {
@@ -58,11 +58,16 @@ export class NvprojComponent implements OnInit {
         budget_activite: formData['budget_act_' + i],
         date_Debut_activite: formData['date_Debut_act_' + i],
         date_Fin_activite: formData['date_Fin_act_' + i],
+        frais_Dhebergement : formData['hebergement_act_'+i],
+        frais_De_Transport: formData['transport_act_'+i],
+        frais_Dalimentation : formData['alimentation_act_'+i],
+        frais_Dachat_Location : formData['achatLocation_act_'+i],
+        frais_Dindemnite : formData['indemnite_act_'+i],
+        autre_Depense : formData['autreDepense_act_'+i],
         lieu_activite: formData['lieu_act_' + i],
         rapport_activite: formData['rapport_act_' + i]
-        // Ajoutez d'autres champs d'activité si nécessaire
       };
-      this.activities.push(activity);
+      this.projects.activites.push(activity)
     }
 
     // Stocker les données dans le service ProjetsService
@@ -70,9 +75,7 @@ export class NvprojComponent implements OnInit {
 
     // Afficher les objets dans la console ou faire autre chose avec eux
     console.log('Projet:', this.projects);
-    console.log('Activités:', this.activities);
 
-    // Réinitialiser le formulaire
     form.resetForm();
 }
 

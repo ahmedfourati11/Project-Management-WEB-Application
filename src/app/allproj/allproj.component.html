@@ -6,16 +6,17 @@
   <div *ngFor="let projet of projets,index as i" class="card" style="width: 18rem;">
     <div class="card-body">
       <div style="display: flex; justify-content: center; margin-bottom: 5%;">
-          <h5 class="card-title">Projet N°: {{ projet.id }}</h5>
+          <h5 class="card-title">Projet N°: {{ projet.numero_du_projet }}</h5>
       </div>
       <p class="card-text">Nom Du Projet : {{ projet.nom_du_Projet }}</p>
       <p class="card-text">Nombres Des Activités : {{ projet.nombre_dactivite }}</p>
-      <p class="card-text">Budget Restant : {{ projet.budget_projet }}</p>  
-      <a [routerLink]="['details_du_projet', projet.id]" target="_blank"><button class="btn btn-primary">Détails Du Projet</button></a>   
+      <p class="card-text">Budget Restant : {{ projet.budget_projet }}</p> 
+      <button class="btn btn-primary" (click)="navigateToProjectDetails(projet.numero_du_projet)" >Détails Du Projet
+        </button>
       <br><br>
-      <a [routerLink]="['liste_des_activite', projet.id]" target="_blank"><button class="btn btn-primary">Liste Des Activités</button></a>
+    <button class="btn btn-primary" (click)="navigateToListeOfActivities(projet.numero_du_projet)">Liste Des Activités</button>
       <br> <br>
-      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="modal(projet.id)">Supprimer le Projet</button>
+      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="modal(projet.numero_du_projet)">Supprimer le Projet</button>
     
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -28,7 +29,7 @@
                     <p>Voulez-vous vraiment supprimer ce projet ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger" (click)="supprimerProjet()">Supprimer le Projet</button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal" (click)="supprimerProjet(projet)">Supprimer le Projet</button>
                 </div>            
             </div>
         </div>

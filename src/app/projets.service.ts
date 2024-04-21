@@ -21,7 +21,8 @@ export class ProjetsService {
 
   supprimerProjet(projetId: number): void {
     let projets = this.getProjets();
-    projets = projets.filter(projet => projet.id !== projetId); // Filtrer par l'id du projet
+    projets = projets.filter(projet => projet.numero_du_projet !== projetId); 
+    console.log(projets);
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(projets));
   }
 }
