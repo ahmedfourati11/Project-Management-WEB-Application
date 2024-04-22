@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ProjetsService } from '../projets.service';
 
 @Component({
   selector: 'app-home',
@@ -10,4 +11,14 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeComponent {
 
+constructor(private projetsService: ProjetsService){}
+
+OnInit():void{
+
+}
+
+  CheckAlerts(){
+    // for (let index = 0; index < this.projetsService.lenght; index++) {
+    // }
+  }
 }

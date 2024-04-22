@@ -11,6 +11,7 @@ import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/route
   templateUrl: './details-de-lactivite.component.html',
   styleUrl: './details-de-lactivite.component.css'
 })
+
 export class DetailsDeLactiviteComponent {
 
   projetId:any;
@@ -26,17 +27,20 @@ export class DetailsDeLactiviteComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.projetId = params['id1'];
-      this.activiteId = params['id2'];
+      this.projetId = params['projetId'];
+      this.activiteId = params['activiteId'];
       console.log('Projet ID:', this.projetId);
       console.log('Activité ID:', this.activiteId);     
-       this.projet=  this.projetsService.getProjets().find(el => el.numero_du_projet==this.projetId);
+       this.projet=  this.projetsService.getProjets().find( el => el.numero_du_projet==this.projetId);
 
-      //  if (this.projet && this.projet.activites) {
-      //  this.activite = this.projet.activites.find(a => a.numero_activite == this.activiteId - 1 ); }
-      console.log(this.projet);
-      console.log(this.activite);
+       if (this.projet && this.projet.activites) {
+       this.activite = [...this.projet.activites].find(a => a.numero_activite == this.activiteId); 
+      }
+
+       console.log(this.projet);
+       console.log(this.activite);
     });
+
   }
 
 

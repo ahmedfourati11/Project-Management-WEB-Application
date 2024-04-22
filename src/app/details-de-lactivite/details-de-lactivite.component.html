@@ -1,85 +1,82 @@
 <br>
 <a routerLink=""><button type="submit" class="btn btn-primary">Retourne à la page précédente</button></a>
 <br>
-
-<h2 style="display: flex; justify-content: center;">Ajouter Un Nouveau Projet !</h2> 
-<br>
+<h2 style="display: flex; justify-content: center;">Détails de L'activité {{activiteId}} Du Projet N° {{projetId}} !</h2> 
 
 <div class="form-container">
   <form>
-    (ngSubmit)="onSubmit(f)" #f="ngForm"   
+    <!-- (ngSubmit)="onSubmit(f)" #f="ngForm"    -->
         <hr>
-        <b><label class="form-label" style="color: rgb(9, 162, 83);">Activité N°: </label></b>
-
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Nom De l'activité : :</label>
-            <input type="text" class="form-control"  name="nom_act" ngModel placeholder="Nom de l'activité" required>
+            <input type="text" class="form-control"  name="nom_act" [(ngModel)]="activite.nom_activite
+            " placeholder="Nom de l'activité" required readonly>
           </div>
 
           <div class="col-md-6">
             <label class="form-label">Budget De l'activité :  :</label>
-            <input type="number" class="form-control" name="budget_act" ngModel placeholder="Budget de l'activité" required>
+            <input type="number" class="form-control" name="budget_act" [(ngModel)]="activite.budget_activite" placeholder="Budget de l'activité" required readonly>
           </div>                         
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Période Du:</label>
-            <input type="date" class="form-control" name="date_Debut_act" ngModel required>
+            <input type="date" class="form-control" name="date_Debut_act" [(ngModel)]="activite.date_Debut_activite" required>
           </div>
 
           <div class="col-md-6">
             <label class="form-label">Au:</label>
-            <input type="date" class="form-control" name="date_Fin_act" ngModel required>
+            <input type="date" class="form-control" name="date_Fin_act" [(ngModel)]="activite.date_Fin_activite"  required>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Frais d'Hébergement :</label>
-            <input type="number" class="form-control"  name="hebergement_act" placeholder="Entrer Le Montant Total" ngModel>
+            <input type="number" class="form-control"  name="hebergement_act" placeholder="Entrer Le Montant Total" [(ngModel)]="activite.frais_Dhebergement" >
           </div>
           
           <div class="col-md-6">
             <label class="form-label">Frais De Transport :</label>
-            <input type="number" class="form-control" name="transport_act" placeholder="Entrer Le Montant Total" ngModel>
+            <input type="number" class="form-control" name="transport_act" placeholder="Entrer Le Montant Total" [(ngModel)]="activite.frais_De_Transport">
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Frais D'alimentation :</label>
-            <input type="number" class="form-control" name="alimentation_act" placeholder="Entrer Le Montant Total" ngModel>
+            <input type="number" class="form-control" name="alimentation_act" placeholder="Entrer Le Montant Total" [(ngModel)]="activite.frais_De_Transport">
           </div>
           
           <div class="col-md-6">
             <label class="form-label">Frais D'Achat & Location :</label>
-            <input type="number" class="form-control" name="achatLocation_act" placeholder="Entrer Le Montant Total" ngModel>
+            <input type="number" class="form-control" name="achatLocation_act" placeholder="Entrer Le Montant Total" [(ngModel)]="activite.frais_Dachat_Location">
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Frais D'indemnité :</label>
-            <input type="number" class="form-control"  name="indemnite_act" placeholder="Entrer Le Montant Total" ngModel>
+            <input type="number" class="form-control"  name="indemnite_act" placeholder="Entrer Le Montant Total" [(ngModel)]="activite.frais_Dindemnite">
           </div>
           
           <div class="col-md-6">
             <label class="form-label">Autre Dépense :</label>
-            <input type="number" class="form-control" name="autreDepense_act" placeholder="Entrer Le Montant Total" ngModel>
+            <input type="number" class="form-control" name="autreDepense_act" placeholder="Entrer Le Montant Total" [(ngModel)]="activite.autre_Depense">
           </div>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Lieu De l'activité :  :</label>
-          <input type="text" class="form-control"  name="lieu_act" ngModel placeholder="Lieu de l'activité" required>
+          <input type="text" class="form-control"  name="lieu_act" [(ngModel)]="activite.lieu_activite" placeholder="Lieu de l'activité" required>
         </div> 
         
         
         <div class="mb-3">
           <label class="form-label">Rapport De l'activité :  : (Taper "y" s'il est prêt, sinon taper "n")</label>
-          <input type="text" class="form-control" name="rapport_act" ngModel placeholder="Taper - y - s'il est prêt, sinon taper - n -" required>
+          <input type="text" class="form-control" name="rapport_act" [(ngModel)]="activite.rapport_activite" placeholder="Taper - y - s'il est prêt, sinon taper - n -" required>
         </div> 
       
 
