@@ -1,22 +1,21 @@
 <br>
 <a routerLink=""><button type="submit" class="btn btn-primary">Retourne à la page précédente</button></a>
 <br>
-<h2 style="display: flex; justify-content: center;">Détails de L'activité {{activiteId}} Du Projet N° {{projetId}} !</h2> 
+<h2 style="display: flex; justify-content: center;">Détails de L'activité {{activiteId}} Du Projet "{{projet.nom_du_Projet}}" !</h2> 
 
 <div class="form-container">
-  <form>
-    <!-- (ngSubmit)="onSubmit(f)" #f="ngForm"    -->
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm"> 
         <hr>
         <div class="row">
           <div class="col-md-6">
-            <label class="form-label">Nom De l'activité : :</label>
+            <label class="form-label">Nom De l'activité : {{activite.numero_activite}} :</label>
             <input type="text" class="form-control"  name="nom_act" [(ngModel)]="activite.nom_activite
             " placeholder="Nom de l'activité" required readonly>
           </div>
 
           <div class="col-md-6">
-            <label class="form-label">Budget De l'activité :  :</label>
-            <input type="number" class="form-control" name="budget_act" [(ngModel)]="activite.budget_activite" placeholder="Budget de l'activité" required readonly>
+            <label class="form-label">Budget De l'activité : {{activite.numero_activite}} :</label>
+            <input type="number" class="form-control" name="udget_act" [(ngModel)]="activite.budget_activite" placeholder="Budget de l'activité" required readonly>
           </div>                         
         </div>
 
@@ -47,7 +46,7 @@
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">Frais D'alimentation :</label>
-            <input type="number" class="form-control" name="alimentation_act" placeholder="Entrer Le Montant Total" [(ngModel)]="activite.frais_De_Transport">
+            <input type="number" class="form-control" name="alimentation_act" placeholder="Entrer Le Montant Total" [(ngModel)]="activite.frais_Dalimentation">
           </div>
           
           <div class="col-md-6">
@@ -69,13 +68,13 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Lieu De l'activité :  :</label>
+          <label class="form-label">Lieu De l'activité : {{activite.numero_activite}} :</label>
           <input type="text" class="form-control"  name="lieu_act" [(ngModel)]="activite.lieu_activite" placeholder="Lieu de l'activité" required>
         </div> 
         
         
         <div class="mb-3">
-          <label class="form-label">Rapport De l'activité :  : (Taper "y" s'il est prêt, sinon taper "n")</label>
+          <label class="form-label">Rapport De l'activité : {{activite.numero_activite}} : (Taper "y" s'il est prêt, sinon taper "n")</label>
           <input type="text" class="form-control" name="rapport_act" [(ngModel)]="activite.rapport_activite" placeholder="Taper - y - s'il est prêt, sinon taper - n -" required>
         </div> 
       
@@ -83,7 +82,7 @@
     <br>
 
     <div style="display: flex;justify-content: center;">
-      <button style="width: 80%;z-index: 1;" type="submit" class="btn btn-primary">Ajouter le projet</button>
+      <button style="width: 80%;z-index: 1;" type="submit" class="btn btn-primary">Modifier Les Détails de l'activité N° {{activite.numero_activite}} </button>
     </div>
 
   </form>
