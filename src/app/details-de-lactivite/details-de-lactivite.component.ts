@@ -50,7 +50,7 @@ export class DetailsDeLactiviteComponent {
       // Mise à jour des données du projet
       this.projetsService.updateProjet(this.projet);
       // Navigation vers la liste de tous les projets
-      this.router.navigate(['all_projects']);
+      this.router.navigate(['liste_des_activite/',this.projetId]);
       console.log(this.projet);
     }
 
